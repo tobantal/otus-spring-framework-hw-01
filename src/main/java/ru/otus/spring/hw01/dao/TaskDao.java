@@ -4,6 +4,6 @@ import java.util.List;
 
 import ru.otus.spring.hw01.domain.Task;
 
-interface TaskDao {
+public interface TaskDao {
 	List<Task> getAllTasks();
 }

@@ -6,7 +6,17 @@ import java.util.function.Supplier;
 import ru.otus.spring.hw01.domain.Answer;
 import ru.otus.spring.hw01.domain.Task;
 
-public class Examinator {
-	private Supplier<Task> taskSupplier;
-	private Consumer<Answer> ansConsumer;
+// move to service
+public class Examinator implements Supplier<Task>, Consumer<Answer> {
+
+	@Override
+	public void accept(Answer t) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public Task get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

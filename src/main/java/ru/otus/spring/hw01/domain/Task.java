@@ -25,4 +25,11 @@ public class Task {
 		return rightAnswer;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("Task [id=%s, text=%s, rightAnswer=%s]", id, text, rightAnswer);
+	}
+	
+	
+
 }

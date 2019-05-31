@@ -8,4 +8,9 @@
 		<property name="csvPath" value="tasks.csv" />
 	</bean>
 
+	<bean id="examinator"
+		class="ru.otus.spring.hw01.controller.SimpleExaminator">
+		<constructor-arg name="taskDao" ref="taskDao" />
+	</bean>
+
 </beans>

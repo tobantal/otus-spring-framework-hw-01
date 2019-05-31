@@ -2,12 +2,11 @@ package ru.otus.spring.hw01.domain;
 
 public class Task {
 	
-	private final long id;
-	private final String text;
-	private final String rightAnswer;
+	private Long id;
+	private String text;
+	private String rightAnswer;
 	
-	public Task(long id, String text, String answer) {
-		super();
+	public Task(Long id, String text, String answer) {
 		this.id = id;
 		this.text = text;
 		this.rightAnswer = answer;

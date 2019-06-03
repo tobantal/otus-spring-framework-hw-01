@@ -1,5 +1,9 @@
 package ru.otus.spring.hw01.service;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.stream.Collectors;
+
 import ru.otus.spring.hw01.dao.TaskDao;
 import ru.otus.spring.hw01.domain.Task;
 
@@ -9,8 +13,6 @@ public class ExaminatorImpl implements Examinator {
 	private TaskDao taskDao;
 	private AnswerTester answerTester;
 	private Interviewer interviewer;
-	private Task currentTask;
-	private int success;
 	
 	private static final String REPORT_TEMPLATE = 
 			"--- Результат теста ---\nИмя: %s\nФамилия: %s\nКоличество правильных ответов: %d";
@@ -19,21 +21,21 @@ public class ExaminatorImpl implements Examinator {
 		this.taskDao = taskDao;
 		this.answerTester = answerTester;
 		this.interviewer = interviewer;
-		System.out.println(">>>" + taskDao.getNumberOfTasks());
-		interviewer.setLimit(taskDao.getNumberOfTasks());
 	}
 
 	@Override
 	public void takeAnExam() {
-		String firstName = interviewer.ask("Ваше имя?");
-		String lastName = interviewer.ask("Ваша фамилия?");
-
-		while( (currentTask = taskDao.getNextTask()) != null ) {
-			String answer = interviewer.ask(currentTask.getText());
-			if(answerTester.testAnswer(currentTask, answer)) {
-				success++;
-			}
-		}
+		Queue<String> questions = new LinkedList<String>();
+		questions.add("Ваше имя?");
+		questions.add("Ваша фамилия?");
+		Queue<Task> tasks = taskDao.getQueueTasks();
+		tasks.forEach(task -> questions.add(task.getText()));
+		
+		Queue<String> answers = interviewer.ask(questions);
+		
+		String firstName = answers.poll();
+		String lastName = answers.poll();
+		int success = answerTester.testAnswer(tasks, answers);
 		
 		System.out.println(String.format(REPORT_TEMPLATE, firstName, lastName, success));
 	}

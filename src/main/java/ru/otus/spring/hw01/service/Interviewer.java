@@ -1,10 +1,10 @@
 package ru.otus.spring.hw01.service;
 
+import java.util.Queue;
 
+@FunctionalInterface
 public interface Interviewer {
 	
-	String ask(String question);
-	
-	void setLimit(int limit);
+	Queue<String> ask(Queue<String> questions);
 	
 }

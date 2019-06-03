@@ -1,33 +1,21 @@
 package ru.otus.spring.hw01.service;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class InterviewerImpl implements Interviewer {
 	
-	private Scanner scanner = new Scanner(System.in);
-	
-	private int limit;
-	
 	@Override
-	public void setLimit(int limit) {
-		this.limit = limit;
-	}
-	
-	@Override
-	public String ask(String question) {
-		
-		if(limit == 0) {
-			throw new UnsupportedOperationException();
+	public Queue<String> ask(Queue<String> questions) {
+		Queue<String> answers = new LinkedList<String>();
+		try(Scanner scanner = new Scanner(System.in)) {
+			questions.forEach(question -> {
+				System.out.println(question);
+				answers.add(scanner.next());
+			});
 		}
-		
-		System.out.println(question);
-		String answer = scanner.next();
-		
-		if(--limit == 0) {
-			scanner.close();
-		}
-		
-		return answer;
+		return answers;
 	}
 
 }

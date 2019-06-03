@@ -4,12 +4,12 @@ public class Task {
 	
 	private Long id;
 	private String text;
-	private String rightAnswer;
+	private String answer;
 	
 	public Task(Long id, String text, String answer) {
 		this.id = id;
 		this.text = text;
-		this.rightAnswer = answer;
+		this.answer = answer;
 	}
 
 	public long getId() {
@@ -21,12 +21,12 @@ public class Task {
 	}
 
 	public String getAnswer() {
-		return rightAnswer;
+		return answer;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Task [id=%s, text=%s, rightAnswer=%s]", id, text, rightAnswer);
+		return String.format("Task [id=%s, text=%s, rightAnswer=%s]", id, text, answer);
 	}
 	
 	

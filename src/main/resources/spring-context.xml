@@ -7,10 +7,17 @@
 	<bean id="taskDao" class="ru.otus.spring.hw01.dao.CsvDao">
 		<property name="csvPath" value="tasks.csv" />
 	</bean>
+	
+	<bean id="answerTester" class="ru.otus.spring.hw01.service.AnswerTesterImpl"></bean>
+	
+	<bean id="interviewer" class="ru.otus.spring.hw01.service.InterviewerImpl"></bean>
+	
 
 	<bean id="examinator"
-		class="ru.otus.spring.hw01.controller.SimpleExaminator">
+		class="ru.otus.spring.hw01.service.ExaminatorImpl">
 		<constructor-arg name="taskDao" ref="taskDao" />
+		<constructor-arg name="answerTester" ref="answerTester" />
+		<constructor-arg name="interviewer" ref="interviewer" />
 	</bean>
 
 </beans>

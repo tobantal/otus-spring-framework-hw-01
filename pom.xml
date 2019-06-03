@@ -11,6 +11,11 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
+
+
+		<packaging>jar</packaging>
+		<maven.test.skip>false</maven.test.skip>
 	</properties>
 
 	<dependencies>
@@ -22,13 +27,35 @@
 			<version>5.1.7.RELEASE</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.junit/junit5-engine -->
+		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
 		<dependency>
-			<groupId>org.junit</groupId>
-			<artifactId>junit5-engine</artifactId>
-			<version>5.0.0-ALPHA</version>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.5.0-M1</version>
+			<scope>test</scope>
 		</dependency>
 
+
 	</dependencies>
+
+	<!-- https://automated-testing.info/t/maven-ne-vidit-junit-testy-v-kode-prosto-pishet-build-success-no-testy-ne-prohodyat/4845/42 -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.21.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.junit.platform</groupId>
+						<artifactId>junit-platform-surefire-provider</artifactId>
+						<version>1.2.0-M1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
 
 </project>

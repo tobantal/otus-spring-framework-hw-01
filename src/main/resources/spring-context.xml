@@ -12,5 +12,18 @@
 		class="ru.otus.spring.hw01.controller.SimpleExaminator">
 		<constructor-arg name="taskDao" ref="taskDao" />
 	</bean>
+	
+	<!-- 
+	
+	<bean id="testTaskDao" class="ru.otus.spring.hw01.dao.CsvDao">
+		<property name="csvPath" value="test-tasks.csv" />
+	</bean>
+	
+	<bean id="csvDaoTest"
+		class="ru.otus.spring.hw01.dao.CsvDaoTest">
+		<constructor-arg name="taskDao" ref="taskDao" />
+	</bean>
+	
+	 -->
 
 </beans>

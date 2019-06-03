@@ -12,13 +12,6 @@ import ru.otus.spring.hw01.domain.Task;
 class CsvDaoTest {
 	
 	private TaskDao taskDao;
-	
-	/*
-	public CsvDaoTest(TaskDao taskDao) {
-		super();
-		this.taskDao = taskDao;
-	}
-	*/
 
 	public void setTaskDao(TaskDao taskDao) {
 		this.taskDao = taskDao;

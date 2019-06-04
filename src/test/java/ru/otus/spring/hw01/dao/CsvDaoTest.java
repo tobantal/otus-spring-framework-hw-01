@@ -1,12 +1,14 @@
 package ru.otus.spring.hw01.dao;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Queue;
 import java.util.function.BiPredicate;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
+
 import ru.otus.spring.hw01.domain.Task;
 
 class CsvDaoTest {

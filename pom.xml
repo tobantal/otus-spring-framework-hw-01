@@ -11,13 +11,13 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<packaging>jar</packaging>
 		<maven.test.skip>false</maven.test.skip>
 	</properties>
 
 	<dependencies>
-
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -32,11 +32,7 @@
 			<version>5.5.0-M1</version>
 			<scope>test</scope>
 		</dependency>
-
-
 	</dependencies>
-
-	<!-- https://automated-testing.info/t/maven-ne-vidit-junit-testy-v-kode-prosto-pishet-build-success-no-testy-ne-prohodyat/4845/42 -->
 
 	<build>
 		<plugins>
@@ -54,6 +50,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

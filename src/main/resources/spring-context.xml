@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="taskDao" class="ru.otus.spring.hw01.dao.CsvDao">
-		<property name="csvPath" value="tasks.csv" />
+		<constructor-arg name="csvPath" value="tasks.csv" />
 	</bean>
 	
 	<bean id="answerTester" class="ru.otus.spring.hw01.service.AnswerTesterImpl"></bean>

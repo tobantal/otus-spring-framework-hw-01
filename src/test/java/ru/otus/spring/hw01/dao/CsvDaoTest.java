@@ -3,33 +3,25 @@ package ru.otus.spring.hw01.dao;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Queue;
+import java.util.function.BiPredicate;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw01.domain.Task;
 
-
 class CsvDaoTest {
-	
-	private TaskDao taskDao;
 
-	public void setTaskDao(TaskDao taskDao) {
-		this.taskDao = taskDao;
-	}
+	private static final BiPredicate<Task, Integer> NTH_TASK = (task, i) -> task.getId() == i
+			&& task.getText().equals("Task" + i) && task.getAnswer().equals("Answer" + i);
 
 	@Test
-	void test() {
-		
-		TaskDao taskDao = new CsvDao(); // new CsvDao("test-tasks.csv");
-		CsvDao csvDao = (CsvDao) taskDao;
-		String csvPath = "test-tasks.csv";
-		csvDao.setCsvPath(csvPath);
-		
-		
+	void load_csv_file() {
+		TaskDao taskDao = new CsvDao("test-tasks.csv");
+
 		Queue<Task> queue = taskDao.getQueueTasks();
 		System.out.println(queue.peek().getText());
-		
-		assertTrue(IntStream.rangeClosed(1, 5).allMatch(x -> queue.poll().getId() == x));
+
+		assertTrue(IntStream.rangeClosed(1, 5).allMatch(i -> NTH_TASK.test(queue.poll(), i)));
 		assertNull(queue.poll());
 	}
 

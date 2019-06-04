@@ -11,12 +11,13 @@ import ru.otus.spring.hw01.domain.Task;
 
 class CsvDaoTest {
 
+	private static final String TEST_CSV_FILE = "test-tasks.csv";
 	private static final BiPredicate<Task, Integer> NTH_TASK = (task, i) -> task.getId() == i
 			&& task.getText().equals("Task" + i) && task.getAnswer().equals("Answer" + i);
 
 	@Test
 	void load_csv_file() {
-		TaskDao taskDao = new CsvDao("test-tasks.csv");
+		TaskDao taskDao = new CsvDao(TEST_CSV_FILE);
 
 		Queue<Task> queue = taskDao.getQueueTasks();
 		System.out.println(queue.peek().getText());

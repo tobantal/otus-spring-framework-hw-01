@@ -11,45 +11,44 @@ import org.junit.jupiter.api.Test;
 
 import ru.otus.spring.hw01.domain.Task;
 
-
 public class AnswerTesterImplTest {
-	
+
 	private static AnswerTester answerTester;
 	private Queue<Task> tasks;
 	private Queue<String> answers;
-	
+
 	@BeforeAll
 	public static void setUpClass() {
 		answerTester = new AnswerTesterImpl();
 	}
-	
+
 	@BeforeEach
 	public void setUp() {
 		tasks = new LinkedList<Task>();
 		answers = new LinkedList<String>();
 	}
-	
+
 	@Test
 	public void check_right_answer() {
 		tasks.add(new Task(1L, "Task1", "a"));
 		answers.add("a");
 		assertEquals(1, answerTester.testAnswer(tasks, answers));
 	}
-	
+
 	@Test
 	public void check_wrong_answer() {
 		tasks.add(new Task(2L, "Task2", "b"));
 		answers.add("x");
 		assertEquals(0, answerTester.testAnswer(tasks, answers));
 	}
-	
+
 	@Test
 	public void check_equals_ignore_case() {
 		tasks.add(new Task(2L, "Task2", "a"));
 		answers.add("A");
 		assertEquals(1, answerTester.testAnswer(tasks, answers));
 	}
-	
+
 	@Test
 	public void check_total_count() {
 		tasks.add(new Task(1L, "Task1", "a"));

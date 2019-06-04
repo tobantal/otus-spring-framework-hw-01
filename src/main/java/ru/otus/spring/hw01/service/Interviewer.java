@@ -4,7 +4,7 @@ import java.util.Queue;
 
 @FunctionalInterface
 public interface Interviewer {
-	
+
 	Queue<String> ask(Queue<String> questions);
-	
+
 }

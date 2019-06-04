@@ -16,7 +16,7 @@ class CsvDaoTest {
 			&& task.getText().equals("Task" + i) && task.getAnswer().equals("Answer" + i);
 
 	@Test
-	void load_csv_file() {
+	void correct_loading_of_the_file() {
 		TaskDao taskDao = new CsvDao(TEST_CSV_FILE);
 
 		Queue<Task> queue = taskDao.getQueueTasks();
